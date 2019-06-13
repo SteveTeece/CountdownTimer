@@ -1,4 +1,4 @@
-﻿<Page
+﻿<Page xmlns:my="using:Syncfusion.UI.Xaml.Controls.Input" 
     x:Class="Timer.Views.HomeView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -14,14 +14,18 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!-- Row 0 - Timer -->
-        <StackPanel Orientation="Vertical"
+        <!-- Row 0 - Timer & Settings -->
+        
+        <!-- Timer / Main Display panel -->
+        <StackPanel x:Name="timerPanel"
+                    Orientation="Vertical"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Visibility="{Binding Path=TimerVisible}">
 
             <TextBlock x:Name="TimeRemaining"
                        Grid.Row="0"
-                       FontSize="40" 
+                       FontSize="60" 
                        HorizontalTextAlignment="Center" />
 
             <!--<TextBlock x:Name="EventDescription"
@@ -31,10 +35,10 @@
 
 
             <Button x:Name="StartButton"
-                    Content="Start Timer"
+                    Content="{Binding Path=StartButtonText }"
                     HorizontalAlignment="Center"
-                    Padding="5"
-                    Margin="0,40,0,0"
+                    Padding="20,5"
+                    Margin="0,20,0,0"
                     FontSize="14">
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
@@ -54,16 +58,122 @@
 
         </StackPanel>
 
-        <!-- Row 1 - Control Buttons --><!--
-        <StackPanel x:Name="buttonsPanel"
+        <!-- Settings Panel -->
+        <StackPanel x:Name="settingsPanel"
+                    Grid.Row="0"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Visibility="{Binding Path=SettingsVisible}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" /> <!-- Hours column -->
+                    <ColumnDefinition Width="auto" /> <!-- Minutes column -->
+                    <ColumnDefinition Width="auto" /> <!-- Seconds column -->
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" /> <!-- Header Row -->
+                    <RowDefinition Height="auto" /> <!-- Values Row -->
+                    <RowDefinition Height="auto" /> <!-- Accept Button Row -->
+                </Grid.RowDefinitions>
+                
+                <!-- Header Row -->
+                <TextBlock Grid.Row="0"
+                           Grid.Column="0"
+                           Text="Hours"
+                           Margin="5"
+                           Padding="3"/>
+                <TextBlock Grid.Row="0"
+                           Grid.Column="1"
+                           Text="Minutes"
+                           Margin="5"
+                           Padding="3" />
+                <TextBlock Grid.Row="0"
+                           Grid.Column="2"
+                           Text="Seconds"
+                           Margin="5"
+                           Padding="3" />
+                
+                <!-- Values Row -->
+                <my:SfNumericUpDown x:Name="SetHours"
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    MaxWidth="100"
+                                    Padding="5"
+                                    Margin="5"
+                                    Maximum="12"
+                                    Minimum="0"
+                                    MaximumNumberDecimalDigits="0"
+                                    SpinButtonsAlignment="Both"
+                                    Value="{Binding Path=SetHours, Mode=TwoWay}" />
+                <my:SfNumericUpDown x:Name="SetMinutes"
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    MaxWidth="100"
+                                    Padding="5"
+                                    Margin="5"
+                                    Minimum="0"
+                                    Maximum="59"
+                                    MaximumNumberDecimalDigits="0"
+                                    SpinButtonsAlignment="Both"
+                                    Value="{Binding Path=SetMinutes, Mode=TwoWay}" />
+                <my:SfNumericUpDown x:Name="SetSeconds"
+                                    Grid.Row="1"
+                                    Grid.Column="2"
+                                    MaxWidth="100"
+                                    Padding="5"
+                                    Margin="5"
+                                    Minimum="0"
+                                    Maximum="59"
+                                    MaximumNumberDecimalDigits="0"
+                                    SpinButtonsAlignment="Both"
+                                    Value="{Binding Path=SetSeconds, Mode=TwoWay}" />
+
+                <!-- Accept Button Row -->
+                <Button x:Name="SetTime"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="3"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="5"
+                        Padding="30,3,30,3"
+                        Content="Set Time" />
+
+            </Grid>
+        </StackPanel>
+        
+        <!-- Row 1 - Control Buttons -->
+        <!--<StackPanel x:Name="buttonsPanel"
                     Grid.Row="1"
-                    HorizontalAlignment="Center" >
+                    HorizontalAlignment="Right" >
             <Button x:Name="SettingsButton"
                     Content="Settings"
-                    Padding="30"
-                    Margin="0,0,0,80"
-                    FontSize="50" />
+                    Padding="5"
+                    Margin="0,0,0,10"
+                    FontSize="14" />
         </StackPanel>-->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right">
+            
+            <!--<Button x:Name="SettingsButton"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,10,10"
+                   FontSize="14"
+                   Padding="20,5"  
+                Content="Settings"/>-->
+            
+            <Button x:Name="ExitButton"
+                   HorizontalAlignment="Right"
+                   Margin="0,0,10,10"
+                   FontSize="14"
+                   Padding="20,5"
+                Content="Close"/>
+        </StackPanel>
+
+
+
+
 
     </Grid>
 </Page>
