@@ -14,47 +14,10 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <!-- Row 0 - Timer -->
-        <StackPanel Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-
-            <TextBlock x:Name="TimeRemaining"
-                       Grid.Row="0"
-                       FontSize="40" 
-                       HorizontalTextAlignment="Center" />
-
-            <!--<TextBlock x:Name="EventDescription"
-                       Margin="0,25,0,0"
-                       HorizontalAlignment="Center"
-                       FontSize="50" />-->
-
-
-            <Button x:Name="StartButton"
-                    Content="Start Timer"
-                    HorizontalAlignment="Center"
-                    Padding="5"
-                    Margin="0,40,0,0"
-                    FontSize="14">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <StackPanel  Orientation="Horizontal" 
-                                     VerticalAlignment="Center"
-                                     BorderBrush="Black"
-                                     BorderThickness="1"
-                                     Padding="5"
-                                     Background="LightGray">
-                            <TextBlock x:Name="buttonText" 
-                                       Text="{TemplateBinding Content}"
-                                       Foreground="Black" />
-                        </StackPanel>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
-
-        </StackPanel>
-
-        <!-- Row 1 - Control Buttons --><!--
+        <!-- Row 0 - ContentArea -->
+        <ContentControl x:Name="ActiveItem" />
+        
+        <!-- 1 - Control Buttons --> 
         <StackPanel x:Name="buttonsPanel"
                     Grid.Row="1"
                     HorizontalAlignment="Center" >
@@ -63,7 +26,7 @@
                     Padding="30"
                     Margin="0,0,0,80"
                     FontSize="50" />
-        </StackPanel>-->
+        </StackPanel>
 
     </Grid>
 </Page>

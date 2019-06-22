@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using System;
+using System.Collections.Generic;
 using Windows.Foundation;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -53,7 +54,9 @@ namespace Timer.ViewModels
 
         }
 
-       
+        public List<string> Activities { get; set; }
+
+
 
         public void StartButton()
         {
